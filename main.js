@@ -3,30 +3,58 @@ const submitter = document.getElementById('submit')
 const output = document.getElementById('output')
 const inputCopy = document.getElementById('inputCopy')
 
+const unitSelect = document.getElementById('unitSelect')
+
 let remainder
 let remainderToHours
 let remainderToMins
 let remainderToMinsToSecs
 let remainderToSecs
 
-submitter.addEventListener('mousedown', convert)
+let unit
+
+
+submitter.addEventListener('mousedown', checker)
 
 window.addEventListener('keydown', keys)
 
 function keys(e){
     if (e.keyCode == 13){
-        convert()
+        checker()
     } else {
         return
     }
 }
 
 
-function convert() {
-    
-    let input = document.getElementById('input').value
+function checker() {
+    input = document.getElementById('input').value
 
-    inputCopy.innerText = input+' seconds is ..'
+    unit = unitSelect.options[unitSelect.selectedIndex].value;
+
+    if (unit == 'seconds') {
+        inputCopy.innerText = input+' seconds is ..'
+        convert()
+    } else if (unit == 'minutes') {
+        inputCopy.innerText = input+' minutes is ..'
+        input = input * 60
+        convert()
+    } else if (unit == 'hours') {
+        inputCopy.innerText = input+' hours is ..'
+        input = input * 3600
+        convert()
+    } else if (unit == 'days') {
+        inputCopy.innerText = input+' days is ..'
+        input = input*86400 
+        convert()
+    }
+
+}
+
+
+function convert(){
+
+    
     output.innerText = ''
 
     if (input >= 60 && input < 3600) { //mins 
@@ -98,7 +126,7 @@ function convert() {
                     }
 
                 } else {
-                    output.innerText = Math.trunc(input )+' days '+ Math.trunc(input) + ' hours and '+remainderToMins+' minutes'
+                    output.innerText = Math.trunc(input )+' days '+ Math.trunc(remainderToHours) + ' hours'
                    
                 }
         } else {
