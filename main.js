@@ -65,7 +65,7 @@ function convert(){
         remainderToSecs = remainder*60
 
         if (remainderToSecs > 0) {
-            output.innerText = Math.trunc(input) + ' minutes and '+Math.round(remainderToSecs)+' seconds '
+            output.innerText = Math.trunc(input) + ' minutes and '+Math.trunc(remainderToSecs)+' seconds '
         } else {
            output.innerText = input + ' minutes '
         }
@@ -83,14 +83,14 @@ function convert(){
             remainderToSecs = remainderToMinsToSecs*60
             remainderToSecs = Math.round(remainderToSecs)
             
-                if (remainderToSecs > 0) {
+                if (remainderToSecs >= 1) {
                    output.innerText = Math.trunc(input) + ' hours '+Math.trunc(remainderToMins)+' minutes and '+ remainderToSecs+ ' seconds '
 
                     
 
 
                 } else {
-                    output.innerText = Math.trunc(input) + ' hours and '+Math.round(remainderToMins)+' minutes '
+                    output.innerText = Math.trunc(input) + ' hours and '+Math.trunc(remainderToMins)+' minutes '
                    
                 }
 
@@ -119,7 +119,7 @@ function convert(){
                     remainderToSecs = remainderToMinsToSecs*60
                     remainderToSecs = Math.round(remainderToSecs)
 
-                    if (remainderToSecs > 0) {
+                    if (remainderToSecs >= 1) {
                         output.innerText = Math.trunc(input) +' days '+ Math.trunc(remainderToHours) + ' hours '+Math.trunc(remainderToMins)+' minutes and '+remainderToSecs+ ' seconds'
                     } else {
                         output.innerText = Math.trunc(input) +' days '+ Math.trunc(remainderToHours) + ' hours and '+Math.trunc(remainderToMins)+'  minutes'
